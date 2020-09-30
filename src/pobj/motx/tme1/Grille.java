@@ -17,24 +17,18 @@ public class Grille {
         }
     }
     public Case getCase(int l,int c){
-    	if ((l<hauteur && l>=0) && (c<largeur && c >= 0)) {
+    	try {
     		return m[l][c];
     	}
-    	else {
+    	catch(Exception e) {
     		System.out.println("grille "+hauteur+"*"+largeur );
     		System.out.println("ERROR BOUND : ["+l+"] ["+c+"]" );
     		return null;
     	}
     }
     public String toString(){
-        String s="";
-        for(int i=0;i<hauteur;i++){
-            for(int j=0;j<largeur;j++){
-                s=s+m[i][j].getChar()+"|";
-            }
-            s=s+"\n";
-        }
-        return s;
+    	return GrilleLoader.serialize(this,false);
+    	
     }
 
     public int nbLig(){

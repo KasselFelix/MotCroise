@@ -13,15 +13,14 @@ public class GrillePlaces {
 		places = new ArrayList<Emplacement>();
 		for(int l=0;l<grille.nbLig();l++) {
 			ArrayList<Case> lig=this.getLig(l);
+			horizontal=places.size();
 			cherchePlaces(lig);
 		}
 		horizontal=places.size();
-		System.out.println(horizontal);
 		for(int c=0;c<grille.nbCol();c++) {
 			ArrayList<Case> col=this.getCol(c);
 			cherchePlaces(col);
 		}
-		System.out.println(places.size());
 		
 	}
 	
@@ -30,14 +29,21 @@ public class GrillePlaces {
 		for (int i=0;i<cases.size();i++) {
 			if(!cases.get(i).isPleine()) {
 				e.add(cases.get(i));
+				//si la case est en bordure
+				if(e.size()>1 && i == cases.size()-1){
+					places.add(e);
+					//Mot Ajouté!
+				}
 			}
-			else{
+
+			else {
 				if(e.size()>1){
 					places.add(e);
-					System.out.println(e.toString());
+					//Mot Ajouté !
 				}
 				e =new Emplacement();
 			}
+			
 		}
 	}
 	
@@ -57,8 +63,8 @@ public class GrillePlaces {
 			for (int i=0;i<grille.nbCol();i++) {
 				cases.add(grille.getCase(lig,i));
 			}
-		//}
-		return cases;
+		//}			  
+	        return cases;
 	}
 	
 	private ArrayList<Case> getCol(int col){

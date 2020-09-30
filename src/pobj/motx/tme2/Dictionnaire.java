@@ -66,7 +66,9 @@ public class Dictionnaire {
 		return cpt;
 	}
 
-	
+	/*public static Dictionnaire LoadDictionnaire(String path) {
+		
+	}*/
 	@Override
 	public String toString() {
 		if (size() == 1) {
