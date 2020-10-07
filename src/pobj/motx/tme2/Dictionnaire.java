@@ -1,5 +1,9 @@
 package pobj.motx.tme2;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +14,7 @@ import java.util.List;
 public class Dictionnaire {
 
 	// stockage des mots
-	private List<String> mots = new ArrayList<>();
+	private List<String> mots = new ArrayList<String>();
 
 	/**
 	 * Ajoute un mot au Dictionnaire, en dernière position.
@@ -54,7 +58,7 @@ public class Dictionnaire {
 	 * @return le nombre de mots supprimés
 	 */
 	public int filtreLongueur(int len) {
-		List<String> cible = new ArrayList<>();
+		List<String> cible = new ArrayList<String>();
 		int cpt=0;
 		for (String mot : mots) {
 			if (mot.length() == len)
@@ -65,10 +69,75 @@ public class Dictionnaire {
 		mots = cible;
 		return cpt;
 	}
+	
+	/**
+	 * retire les mots du dictionnaire qui n'ont pas le caractere c a la position i
+	 * Attention cette opération modifie le Dictionnaire, utiliser copy() avant de filtrer pour ne pas perdre d'information.
+	 * @param c le caractere voulu
+	 * @param i l'indice de la case voulu
+	 * @return le nombre de mots supprimés du dictionnaire
+	 */
+	public int filtreParLettre(char c,int i){
+		List<String> cible = new ArrayList<String>();
+		int cpt=0;
+		for (String mot : mots) {
+			if (mot.charAt(i) == c || c==' ')
+				cible.add(mot);
+			else
+				cpt++;
+		}
+		mots = cible;
+		return cpt;
+	}
+	
+	/**
+	 * retire les mots dont la ieme lettre ne sont pas dans l'ensemble de lettres 
+	 * Attention cette opÃ©ration modifie le Dictionnaire, utiliser copy() avant de filtrer pour ne pas perdre d'information.
+	 * @param i indice de la lettre voulu
+	 * @param e ensemble de lettres
+	 * @return le nombre de mots supprimÃ©s du dictionnaire
+	 */
+	public int filtrageParIndex(int i, EnsembleLettre e)
+	{
+		List<String> cible = new ArrayList<String>();
+		int cpt=0;
+		for (String mot : mots) 
+		{
+			if (e.contains(mot.charAt(i)))
+				cible.add(mot);
+			else
+				cpt++;
+		}
+		mots = cible;
+		return cpt;
+	}
 
-	/*public static Dictionnaire LoadDictionnaire(String path) {
-		
-	}*/
+	/**
+	 * charge un dictionnaire depuis un fichier situe au path  fourni
+	 * @param path chemin d'accès au dictionnaire
+	 * @return un dictionnaire contenant les mots possible
+	 */
+	public static Dictionnaire loadDictionnaire(String path){
+		Dictionnaire d=new Dictionnaire();
+		// Try-with-resource : cette syntaxe permet d’accéder au contenu du fichier ligne par ligne
+		try (BufferedReader br= new BufferedReader(new FileReader(new File(path)))){
+			String s=br.readLine();
+			while(s != null) {
+				d.add(s);
+				s=br.readLine();
+			}
+		}
+		catch(IOException e) {
+			// Problème d’accès au fichier
+			e.printStackTrace();
+		}
+		return d;
+	}
+	
+	public List<String> getMots() {
+		return mots;
+	}
+
 	@Override
 	public String toString() {
 		if (size() == 1) {

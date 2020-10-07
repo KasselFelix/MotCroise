@@ -1,11 +1,19 @@
 package pobj.motx.tme1;
-
+/**
+ * Classe de representation d'une grille de mots croises
+ */
 public class Grille {
-	
+	/** hauteur de la grille*/
 	private int hauteur;
+	/** largeur de la grille*/
     private int largeur;
+    /** matrice de representation de la grille*/
     private Case[][] m;
-   
+    /**
+     * Construit une grille avec hauteur lignes et largeur colonnes
+     * @param hauteur nombre de lignes de la grille
+     * @param largeur nombre de colonnes de la grille
+     */
     public Grille(int hauteur, int largeur){
         this.hauteur=hauteur;
         this.largeur=largeur;
@@ -16,6 +24,12 @@ public class Grille {
             }
         }
     }
+    /**
+     * Accede a une case de la grille
+     * @param lig numero de ligne de la case
+     * @param col numero de colonne de la case
+     * @return la case aux coordonnees lig et col
+     */
     public Case getCase(int l,int c){
     	try {
     		return m[l][c];
@@ -26,19 +40,24 @@ public class Grille {
     		return null;
     	}
     }
-    public String toString(){
-    	return GrilleLoader.serialize(this,false);
-    	
-    }
-
+    /**
+     * Accede au nombre de lignes de la grille
+     * @return le nombre de lignes
+     */
     public int nbLig(){
         return hauteur;
     }
-    
+    /**
+     * Accede au nombre de colonnes de la grille
+     * @return le nombre de colonnes
+     */
     public int nbCol(){
         return largeur;
     }
-    
+    /**
+     * Accede au nombre de colonnes de la grille
+     * @return le nombre de colonnes
+     */
     public Grille copy(){
         int l=nbLig();
         int c=nbCol();
@@ -49,5 +68,9 @@ public class Grille {
             }
         }
         return g;
+    }
+    
+    public String toString(){
+    	return GrilleLoader.serialize(this,false);
     }
 }
