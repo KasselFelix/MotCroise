@@ -97,7 +97,7 @@ public class Dictionnaire {
 	 * @param e ensemble de lettres
 	 * @return le nombre de mots supprimÃ©s du dictionnaire
 	 */
-	public int filtrageParIndex(int i, EnsembleLettre e)
+	public int filtrageParIndice(int i, EnsembleLettre e)
 	{
 		List<String> cible = new ArrayList<String>();
 		int cpt=0;

@@ -48,9 +48,9 @@ public class CroixContrainte implements IContrainte {
 		int nbMotsFiltre=0;
 		
 		if(nbLPC1>nbLPinter)
-				nbMotsFiltre+=dE1.filtrageParIndex(c1,s);
+				nbMotsFiltre+=dE1.filtrageParIndice(c1,s);
 		if(nbLPC2>nbLPinter) 
-				nbMotsFiltre+=dE2.filtrageParIndex(c2, s);
+				nbMotsFiltre+=dE2.filtrageParIndice(c2, s);
 		
 		return nbMotsFiltre;
 	}
