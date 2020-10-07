@@ -46,14 +46,32 @@ public class GrillePotentielTest4 {
 	}
 
 	private void checkContraintes(GrillePotentiel gp, int[][] expected) {
-		//List<IContrainte> exp = new ArrayList<>();
-		List<IContrainte> exp = new ArrayList<IContrainte>();
+		List<IContrainte> exp = new ArrayList<>();
 		for (int []e : expected) {
 			// (m1,c1,m2,c2) dans cet ordre.
 			exp.add(new CroixContrainte(e[0], e[1], e[2], e[3]));
 		}
 		
 		assertEquals(expected.length, gp.getContraintes().size());
+//		System.out.println(" ----- DEBUT --------");
+//		System.out.println("EXPECTED");
+//		for (int i = 0; i < exp.size(); i++) {
+//			System.out.println(exp.get(i) + " : " +
+//		"C1 : " + ((CroixContrainte) exp.get(i)).getC1() + " - " +
+//		"M1 : " +((CroixContrainte) exp.get(i)).getM1() + " - " +
+//		"C2 : " + ((CroixContrainte) exp.get(i)).getC2() + " - " +
+//		"M2 : " +((CroixContrainte) exp.get(i)).getM2());
+//
+//		}
+//		System.out.println("TA LISTE");
+//		for (int i = 0; i < gp.getContraintes().size(); i++) {
+//			System.out.println(gp.getContraintes().get(i) + " : " +
+//					"C1 : " + ((CroixContrainte) gp.getContraintes().get(i)).getC1() + " - " +
+//					"M1 : " +((CroixContrainte) gp.getContraintes().get(i)).getM1() + " - " +
+//					"C2 : " + ((CroixContrainte) gp.getContraintes().get(i)).getC2() + " - " +
+//					"M2 : " +((CroixContrainte) gp.getContraintes().get(i)).getM2());
+//		}
+//		System.out.println("----- FIN ------");
 		for (IContrainte c : gp.getContraintes()) {
 			// penser à définir public boolean equals(Object o) dans CroixContrainte.
 			assertTrue(exp.contains(c));

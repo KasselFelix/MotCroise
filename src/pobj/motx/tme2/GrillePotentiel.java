@@ -28,7 +28,7 @@ public class GrillePotentiel {
 		}
 		
 		/**
-		//version optimiser non complete filtre par lettrre manquant
+		//version optimiser non complete filtre par lettre manquant
 		for(int cpt=0;cpt<gp.getPlaces().size();cpt++){
 			motsPot.add(new Dictionnaire()); 
 		}
@@ -51,7 +51,9 @@ public class GrillePotentiel {
 		IContrainte c;
 		for(int m1=0;m1<gp.getNbHorizontal();m1++){
 			List<Case> motH = gp.getPlaces().get(m1).getLettres();
+			c1=0;
 			for (int m2=gp.getNbHorizontal();m2<gp.getPlaces().size();m2++){
+				c1=0;
 				List<Case> motV = gp.getPlaces().get(m2).getLettres();
 				for(Case cMotH : motH){
 					c2=0;
@@ -69,7 +71,7 @@ public class GrillePotentiel {
 				}
 			}
 		}
-		//propage();
+		propage();
 	}
 	
 	public GrillePotentiel fixer(int m, String soluce) {
@@ -95,8 +97,8 @@ public class GrillePotentiel {
 			int nbEliminations=0;
 			for (IContrainte c : contraintes) 
 				nbEliminations+= c.reduce(this);
-			if(this.isDead())return false;
 			if(nbEliminations==0)return true;
+			if(this.isDead())return false;
 		}
 	}
 	
