@@ -57,7 +57,7 @@ public class GrillePotentiel {
 					c2=0;
 					if(cMotH.isVide()){
 						for(Case cMotV : motV){
-							if(cMotH.getChar()==cMotV.getChar() ){
+							if(cMotH==cMotV ){
 								c = new CroixContrainte(m1,c1,m2,c2);
 								if(!contraintes.contains(c))
 									contraintes.add(c);

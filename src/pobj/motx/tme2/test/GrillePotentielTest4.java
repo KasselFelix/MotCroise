@@ -54,7 +54,6 @@ public class GrillePotentielTest4 {
 		}
 		
 		assertEquals(expected.length, gp.getContraintes().size());
-		
 		for (IContrainte c : gp.getContraintes()) {
 			// penser à définir public boolean equals(Object o) dans CroixContrainte.
 			assertTrue(exp.contains(c));

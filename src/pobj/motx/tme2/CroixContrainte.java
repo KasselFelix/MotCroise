@@ -40,9 +40,7 @@ public class CroixContrainte implements IContrainte {
 //		}
 		EnsembleLettre lettresPotentielC1=new EnsembleLettre();
 		for(String mot : dE1.getMots()) {
-			for(int i=0; i<mot.length();i++) {
-				lettresPotentielC1.add(caseC1.getChar());
-			}
+			lettresPotentielC1.add(mot.charAt(c1));
 		}
 
 		nbLPC1=lettresPotentielC1.size();
@@ -56,9 +54,7 @@ public class CroixContrainte implements IContrainte {
 //		}
 		EnsembleLettre lettresPotentielC2=new EnsembleLettre();
 		for(String mot : dE2.getMots()) {
-			for(int i=0; i<mot.length();i++) {
-				lettresPotentielC2.add(caseC2.getChar());
-			}
+			lettresPotentielC1.add(mot.charAt(c2));
 		}
 		nbLPC2=lettresPotentielC2.size();
 		
@@ -67,17 +63,12 @@ public class CroixContrainte implements IContrainte {
 		int nbMotsFiltre=0;
 		
 		if(nbLPC1>nbLPinter) {
-			//for( Case c : Em1.getLettres())
-				//nbMotsFiltre+=dE1.filtreParLettre(c.getChar(), c1);
-				nbMotsFiltre+=dE1.filtrageParIndex(c1, lettresPotentielC1);
+				nbMotsFiltre+=dE1.filtrageParIndex(c1,s);
 		}
 		
 		if(nbLPC2>nbLPinter) {
-			//for( Case c : Em2.getLettres())
-				//nbMotsFiltre+=dE2.filtreParLettre(c.getChar(), c2);
-				nbMotsFiltre+=dE1.filtrageParIndex(c2, lettresPotentielC2);
+				nbMotsFiltre+=dE2.filtrageParIndex(c2, s);
 		}
-		
 		return nbMotsFiltre;
 	}
 	
