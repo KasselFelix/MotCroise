@@ -35,19 +35,9 @@ public class EnsembleLettre {
 		return lettres.contains(c); 
 	}
 	/**
-	 * Calcule 'intersection entre cette ensemble et l'ensemble eL2 
-	 * modifie la liste
-	 * @param e un ensemble de lettres avec lequel on calcule l'intersection
-	 * @return un ensemble de lettres représentant l'intersection des deux ensembles.
-	 */
-	boolean retainAll(List<Character> liste) {
-		return lettres.retainAll(liste);
-	}	
-
-	/**
-	 * Calcule 'intersection entre cette ensemble et l'ensemble eL2 
+	 * Calcule l'intersection entre cet ensemble et l'ensemble eL2 
 	 * @param eL2
-	 * @return l'intersection entre cette ensemble et de l'ensemble eL2
+	 * @return l'intersection entre cet ensemble et de l'ensemble eL2
 	 */
 	public EnsembleLettre intersection(EnsembleLettre eL2) {
 		EnsembleLettre newEl = new EnsembleLettre();
@@ -57,7 +47,11 @@ public class EnsembleLettre {
 		}
 		return newEl;
 	}
-	
+
+	/**
+     * Accede a la liste de lettres
+     * @return Liste des lettres de l'ensemble 
+     */
 	public List<Character> getLettres() {
 		return lettres;
 	}

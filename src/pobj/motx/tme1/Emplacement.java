@@ -40,10 +40,8 @@ public class Emplacement{
     
     public String toString(){
     	StringBuilder sb = new StringBuilder();
-    	for(Case l : lettres) {
+    	for(Case l : lettres)
     		sb.append(l.toString() );
-    	}
-    	sb.append("\n");
     	return sb.toString();
     }
 }

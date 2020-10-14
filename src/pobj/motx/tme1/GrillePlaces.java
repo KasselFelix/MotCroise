@@ -19,20 +19,18 @@ public class GrillePlaces {
 	public GrillePlaces(Grille grille) {
 		this.grille=grille;
 		places = new ArrayList<Emplacement>();
-		
+		//recherche les emplacements horizontaux
 		for(int l=0;l<grille.nbLig();l++)
 			cherchePlaces(this.getLig(l));
 		
 		nbHorizontal=places.size();
-		
+		//recherche les emplacements verticaux
 		for(int c=0;c<grille.nbCol();c++)
 			cherchePlaces(this.getCol(c));
-
-		System.out.println(this.toString());
 	}
 	/**
-	 * Accede aux cases de la ligne en parametre et les ajoute dans une liste de Case
-	 * @param lig
+	 * Accede aux cases de la ligne en parametre et les ajoute dans une liste de Cases
+	 * @param lig indice de la ligne de la grille
 	 * @return les cases qui constituent une ligne donnée
 	 */
 	private List<Case> getLig(int lig){
@@ -44,7 +42,7 @@ public class GrillePlaces {
 	
 	/**
 	 * Accede aux cases de la colonne en parametre et les ajoute dans une liste de Case
-	 * @param col
+	 * @param col indice de la colonne de la grille
 	 * @return les cases qui constituent une colonne donnée
 	 */
 	private List<Case> getCol(int col){
@@ -82,7 +80,10 @@ public class GrillePlaces {
 	public Grille getGrille() {
 		return grille;
 	}
-	
+	/**
+     * Accede a la liste des emplacements
+     * @return Liste des emplacement des mots dans la grille
+     */
 	public List<Emplacement> getPlaces(){
         return places;
 

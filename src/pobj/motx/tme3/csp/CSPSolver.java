@@ -1,6 +1,8 @@
 package pobj.motx.tme3.csp;
 
 public class CSPSolver {
+	
+	//private IChoixValeur stratVal;
 
 	public ICSP solve(ICSP problem) {
 		System.out.println("Solve : \n" + problem);

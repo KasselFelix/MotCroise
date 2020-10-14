@@ -25,8 +25,7 @@ public class GrilleLoader {
 
 		// try-with-resource : cette syntaxe permet d'accéder au contenu du
 		// fichier ligne par ligne.
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(path));
+		try (BufferedReader br = new BufferedReader(new FileReader(path))){
 			// un compteur pour retenir le numero de la ligne qu'on charge
 			// actuellement
 			int lig = 0;

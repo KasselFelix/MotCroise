@@ -15,6 +15,7 @@ public class Dictionnaire {
 
 	// stockage des mots
 	private List<String> mots = new ArrayList<String>();
+	private EnsembleLettre[] cache=null;
 
 	/**
 	 * Ajoute un mot au Dictionnaire, en dernière position.
@@ -47,6 +48,7 @@ public class Dictionnaire {
 	 */
 	public Dictionnaire copy () {
 		Dictionnaire copy = new Dictionnaire();
+		copy.cache=cache;
 		copy.mots.addAll(mots);
 		return copy;
 	}
@@ -66,6 +68,7 @@ public class Dictionnaire {
 			else
 				cpt++;
 		}
+		if(cpt>0)cache=null;
 		mots = cible;
 		return cpt;
 	}
@@ -81,23 +84,24 @@ public class Dictionnaire {
 		List<String> cible = new ArrayList<String>();
 		int cpt=0;
 		for (String mot : mots) {
-			if (mot.charAt(i) == c || c==' ')
+			if (mot.charAt(i) == c)
 				cible.add(mot);
 			else
 				cpt++;
 		}
+		if(cpt>0)cache=null;
 		mots = cible;
 		return cpt;
 	}
 	
 	/**
 	 * retire les mots dont la ieme lettre ne sont pas dans l'ensemble de lettres 
-	 * Attention cette opÃ©ration modifie le Dictionnaire, utiliser copy() avant de filtrer pour ne pas perdre d'information.
+	 * Attention cette operation modifie le Dictionnaire, utiliser copy() avant de filtrer pour ne pas perdre d'information.
 	 * @param i indice de la lettre voulu
 	 * @param e ensemble de lettres
-	 * @return le nombre de mots supprimÃ©s du dictionnaire
+	 * @return le nombre de mots supprimes du dictionnaire
 	 */
-	public int filtrageParIndice(int i, EnsembleLettre e)
+	public int filtrageParLettre(int i, EnsembleLettre e)
 	{
 		List<String> cible = new ArrayList<String>();
 		int cpt=0;
@@ -108,6 +112,7 @@ public class Dictionnaire {
 			else
 				cpt++;
 		}
+		if(cpt>0)cache=null;
 		mots = cible;
 		return cpt;
 	}
@@ -134,10 +139,27 @@ public class Dictionnaire {
 		return d;
 	}
 	
+	public EnsembleLettre charAt(int index){
+		if (this.mots.size()==0)
+			return new EnsembleLettre();
+		if (cache==null)
+			cache=new EnsembleLettre[mots.get(0).length()];
+		if(cache[index]==null){
+			EnsembleLettre solution=new EnsembleLettre();
+			for(String mot : this.mots)
+				solution.add(mot.charAt(index));
+			cache[index]=solution;
+		}
+		return cache[index];
+	}
+	/**
+	  Accede a la liste des mots du dictionnaire
+     * @return mots Liste des mots dans le dictionnaire
+	 */
 	public List<String> getMots() {
 		return mots;
 	}
-
+	
 	@Override
 	public String toString() {
 		if (size() == 1) {

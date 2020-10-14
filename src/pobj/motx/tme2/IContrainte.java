@@ -1,5 +1,4 @@
 package pobj.motx.tme2;
-
 /**
  * Interface representant les contraintes 
  */
