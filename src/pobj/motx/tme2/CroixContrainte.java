@@ -54,7 +54,6 @@ public class CroixContrainte implements IContrainte {
 		 //Si lettresPotentiel2 > s
 		if(lettresPotentiel2.size()>s.size())
 				nbMotsFiltre+=dE2.filtrageParLettre(c2, s);//filtrage des mots potentiels de l’emplacement m2 ,conservation uniquement des mots avec la c1-ième lettre dans s
-		
 		return nbMotsFiltre;
 	}
 	

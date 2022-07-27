@@ -125,7 +125,8 @@ public class Dictionnaire {
 	public static Dictionnaire loadDictionnaire(String path){
 		Dictionnaire d=new Dictionnaire();
 		// Try-with-resource : cette syntaxe permet d’accéder au contenu du fichier ligne par ligne
-		try (BufferedReader br= new BufferedReader(new FileReader(new File(path)))){
+		try {
+			BufferedReader br= new BufferedReader(new FileReader(new File(path)));
 			String s=br.readLine();
 			while(s != null) {
 				d.add(s);
@@ -160,6 +161,10 @@ public class Dictionnaire {
 		return mots;
 	}
 	
+	public void setMots(List<String> mots) {
+		this.mots = mots;
+	}
+
 	@Override
 	public String toString() {
 		if (size() == 1) {

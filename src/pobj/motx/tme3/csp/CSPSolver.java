@@ -1,8 +1,9 @@
 package pobj.motx.tme3.csp;
 
-public class CSPSolver {
+public class CSPSolver{
 	
-	//private IChoixValeur stratVal;
+	private IChoixVar stratVar = new StratMin() ;
+	private IChoixValeur stratVal = new StrategyFrequency();
 
 	public ICSP solve(ICSP problem) {
 		System.out.println("Solve : \n" + problem);
@@ -18,10 +19,11 @@ public class CSPSolver {
 		} else {
 			System.out.println("Problème valide.");
 		}
-		// On choisit une variable arbitraire, ici la première
+		// On choisit une variable en fonction de la strategy definie
 		// On est garantis que ! getVars().isEmpty(), testé au dessus
-		IVariable vi = problem.getVars().get(0);
-
+		IVariable vi = stratVar.chooseVar(problem);
+		vi.setDomain(stratVal.orderValues(problem, vi));
+		
 		ICSP next = null;
 		// On est garantis que toute variable a un domaine non nul
 		for (String val : vi.getDomain()) {
@@ -37,6 +39,12 @@ public class CSPSolver {
 		System.out.println("Backtrack sur variable "+ vi);
 		return next;
 	}
-
-
+	
+	public void setChoixVarStrat(IChoixVar strat){
+		stratVar=strat;
+	}
+	
+	public void setChoixValeurStrat(IChoixValeur strat){
+		stratVal=strat;
+	}
 }

@@ -65,6 +65,7 @@ public class GrillePotentiel {
 			}
 		}
 		/**/
+		
 		IContrainte c;
 		for(int m1=0;m1<gp.getNbHorizontal();m1++){
 			List<Case> motH = gp.getPlaces().get(m1).getLettres();
@@ -75,16 +76,24 @@ public class GrillePotentiel {
 						for(int c2=0;c2<motV.size();c2++){
 							if(motH.get(c1)== motV.get(c2)){
 								c = new CroixContrainte(m1,c1,m2,c2);
-								if(!contraintes.contains(c))
+								if(!contraintes.contains(c)){
 									contraintes.add(c);
+									if(!contraintes.contains(c)){
+										contraintes.add(c);
+										gp.getPlaces().get(m1).addContraintes(1);
+										gp.getPlaces().get(m2).addContraintes(1);
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-		//IContrainte mC = new MotUnique();
-		//contraintes.add(mC);
+		
+		IContrainte mC = new MotUnique();
+		contraintes.add(mC);
+		
 		propage();
 	}
 	/**
@@ -111,9 +120,6 @@ public class GrillePotentiel {
 			motsPot.add(domaineE);
 		}
 		
-		IContrainte mC = new MotUnique();
-		contraintes.add(mC);
-		
 		IContrainte c;
 		for(int m1=0;m1<gp.getNbHorizontal();m1++){
 			List<Case> motH = gp.getPlaces().get(m1).getLettres();
@@ -124,14 +130,20 @@ public class GrillePotentiel {
 						for(int c2=0;c2<motV.size();c2++){
 							if(motH.get(c1)== motV.get(c2)){
 								c = new CroixContrainte(m1,c1,m2,c2);
-								if(!contraintes.contains(c))
+								if(!contraintes.contains(c)){
 									contraintes.add(c);
+									gp.getPlaces().get(m1).addContraintes(1);
+									gp.getPlaces().get(m2).addContraintes(1);
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+		
+		IContrainte mC = new MotUnique();
+		contraintes.add(mC);
 		
 		propage();
 	}
@@ -157,9 +169,15 @@ public class GrillePotentiel {
 	 * @return true si un des dictionnaires de la liste motsPot est vide et false sinon
 	 */
 	public boolean isDead(){
-		for(Dictionnaire domaine : motsPot)
-			if(domaine.size()==0)
+		//int cpt=0;
+		for(Dictionnaire domaine : motsPot){
+			if(domaine.size()==0){
+				//System.out.println(cpt);
+				//System.out.println(gp.getPlaces().get(cpt));
 				return true;
+			}
+			//cpt++;
+		}
 		return false;
 	}
 	/**

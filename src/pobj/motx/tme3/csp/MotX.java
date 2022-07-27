@@ -31,6 +31,7 @@ public class MotX implements ICSP {
 		if(vi instanceof DicoVariable){
 			DicoVariable dVi=  (DicoVariable) vi;
 			ICSP newMotX=new MotX(gp.fixer(dVi.getIndex(), val));
+			variables.remove(vi);
 			return newMotX;
 		}
 		return null;

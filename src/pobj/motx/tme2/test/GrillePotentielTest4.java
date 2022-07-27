@@ -46,7 +46,7 @@ public class GrillePotentielTest4 {
 	}
 
 	private void checkContraintes(GrillePotentiel gp, int[][] expected) {
-		List<IContrainte> exp = new ArrayList<>();
+		List<IContrainte> exp = new ArrayList<IContrainte>();
 		for (int []e : expected) {
 			// (m1,c1,m2,c2) dans cet ordre.
 			exp.add(new CroixContrainte(e[0], e[1], e[2], e[3]));
