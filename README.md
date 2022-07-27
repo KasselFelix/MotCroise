@@ -9,9 +9,5 @@ Instructions succinctes de rendu :
 * assurez-vous que les tests unitaires de l'intégration continue sous GitLab fonctionnent : _CI / CD > pipelines_ sur la page du projet GitLab ;
 * ajoutez un _tag_ (allez dans _Repository > Tags_ sur la page du projet GitLab et cliquez _New Tag_) avec pour titre _rendu-initial-tmeX_ ou _rendu-final-tmeX_, avec le numéro _X_ du TME, et la réponse aux questions demandées dans le champ _Release notes_.
 
-Voir les énoncés de TME et les instructions détaillées de rendu sur le [Moodle du cours](https://moodle-sciences.upmc.fr/).
-
-L'intégration continue exécute le script `.gitlab-ci.yml`, qui précise la liste des classes de test unitaire. Vous pouvez ajouter vos propres tests à cette liste.
-
 
 
