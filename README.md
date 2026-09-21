@@ -1,5 +1,5 @@
 
-# 🧩 MotCroise — Générateur et Solveur de Mots Croisés en Java
+# MotCroise — Générateur et Solveur de Mots Croisés en Java
 
 **MotCroise** est un logiciel de **construction et de résolution automatique de mots croisés**, développé en **Java**.  
 Il implémente un **algorithme de satisfaction de contraintes (CSP)** capable de résoudre un mot croisé en **moins de deux minutes**, grâce à des **heuristiques intelligentes** et à l’utilisation d’un **dictionnaire lexical**.
