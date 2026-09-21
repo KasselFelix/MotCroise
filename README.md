@@ -1,4 +1,3 @@
----
 
 # 🧩 MotCroise — Générateur et Solveur de Mots Croisés en Java
 
