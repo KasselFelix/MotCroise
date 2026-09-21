@@ -103,4 +103,3 @@ Grille complétée en 1 min 42 s
 Développé par **Wycherley-Kassel Felix**  
 Projet académique en Java — démonstration d’un solveur CSP appliqué aux mots croisés.
 
----
